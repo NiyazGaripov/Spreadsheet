@@ -1,0 +1,23 @@
+{
+  "name": "spreadsheet",
+  "version": "1.0.0",
+  "description": "JavaScript spreadsheet application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiyazGaripov/Spreadsheet.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Niyaz Garipov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NiyazGaripov/Spreadsheet/issues"
+  },
+  "homepage": "https://github.com/NiyazGaripov/Spreadsheet#readme",
+  "private": true
+}
