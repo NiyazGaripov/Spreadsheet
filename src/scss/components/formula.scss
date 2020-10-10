@@ -1,0 +1,38 @@
+@import "src/scss/config/variables";
+@import "src/scss/config/mixins";
+
+.spreadsheet__formula {
+  position: absolute;
+  top: $header-height + $toolbar-height;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  height: $formula-height;
+
+  border-bottom: 1px solid $gray;
+
+  .info {
+    min-width: $cell-width;
+
+    font-size: 18px;
+    font-style: italic;
+    color: $gray;
+    text-align: center;
+
+    border-right: 1px solid $gray;
+  }
+
+  .formula-bar {
+    padding: 4px 10px;
+    width: 100%;
+    height: 100%;
+
+    font-size: 14px;
+
+    color: $black;
+
+    outline: none;
+  }
+}
