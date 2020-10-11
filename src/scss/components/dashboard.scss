@@ -1,0 +1,191 @@
+@import "src/scss/config/variables";
+@import "src/scss/config/mixins";
+
+.dashboard {
+
+  &__header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    height: $db-header-height;
+
+    background-color: $white;
+
+    box-shadow: 0 2px 5px 2px rgba(60, 64, 67, 0.15);
+
+    .logo {
+      vertical-align: middle;
+
+      font-size: 40px;
+      color: $green;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+
+    font-weight: 400;
+    color: $darkgray;
+  }
+
+  &__search {
+    position: relative;
+
+    display: flex;
+    width: 100%;
+    max-width: 720px;
+
+    background-color: lighten($gray, 19%);
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    input {
+      padding: 14px;
+      width: 100%;
+
+      font-size: 16px;
+
+      background-color: transparent;
+
+      border: none;
+
+      outline: none;
+    }
+
+    button {
+      width: 46px;
+
+      background-color: transparent;
+
+      border: none;
+
+      outline: none;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+      &:hover,
+      &:focus {
+        i {
+          color: $green;
+        }
+      }
+    }
+
+    i {
+      font-size: 26px;
+      color: $darkgray;
+    }
+  }
+
+  &__sheets {
+    margin-top: $db-header-height;
+    padding: 20px;
+    background-color: lighten($gray, 19%);
+
+    h2 {
+      margin-bottom: 16px;
+
+      font-size: 18px;
+      font-weight: 400;
+      color: $darkgray;
+    }
+  }
+
+  ul {
+    @include ul-rest();
+  }
+
+  &__create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    min-height: 130px;
+
+    color: $black;
+    text-align: center;
+    text-decoration: none;
+
+    background-color: $white;
+
+    border-radius: 4px;
+    border: 1px solid lighten($gray, 10%);
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    &:hover,
+    &:focus {
+      color: $green;
+
+      border-color: $green;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: lighten($black, 20%);
+  }
+
+  &__item {
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid $lightgray;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &:focus {
+      border-bottom: 1px solid transparent;
+    }
+  }
+
+  &__record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+
+    color: $darkgray;
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    &:hover,
+    &:focus {
+      background-color: $lightgreen;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
