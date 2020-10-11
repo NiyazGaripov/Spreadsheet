@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 @import "~normalize.css";
 
+@import "src/scss/config/visually-hidden";
+@import "src/scss/components/dashboard";
 @import "src/scss/components/header";
 @import "src/scss/components/toolbar";
 @import "src/scss/components/formula";
@@ -16,4 +18,13 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   line-height: 1.4;
+}
+
+.spreadsheet {
+  position: relative;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1140px;
 }
