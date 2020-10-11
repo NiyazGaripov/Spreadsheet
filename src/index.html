@@ -11,185 +11,22 @@
   <title>Spreadsheet</title>
 </head>
 <body>
-  <main id="app" class="container spreadsheet">
-    <h1 class="visually-hidden">Spreadsheet</h1>
-
-    <header class="spreadsheet__header">
-      <input type="text" value="Untitled spreadsheet"/>
-
+  <main id="app" class="container dashboard">
+    <header class="dashboard__header">
       <div>
-        <button type="button">
-          <i class="material-icons">delete</i>
-        </button>
-
-        <button type="button">
-          <i class="material-icons">exit_to_app</i>
-        </button>
+        <i class="material-icons logo">insert_drive_file</i>
+        <h1 class="dashboard__title">Spreadsheet</h1>
       </div>
+
+      <form class="dashboard__search" action="#">
+        <input type="text" placeholder="Search">
+
+        <button type="submit">
+          <i class="material-icons">search</i>
+        </button>
+      </form>
     </header>
 
-    <section class="spreadsheet__toolbar">
-      <h2 class="visually-hidden">Toolbar</h2>
-
-      <button type="button">
-        <i class="material-icons">format_align_left</i>
-      </button>
-
-      <button type="button">
-        <i class="material-icons">format_align_center</i>
-      </button>
-
-      <button type="button">
-        <i class="material-icons">format_align_right</i>
-      </button>
-
-      <button type="button">
-        <i class="material-icons">format_bold</i>
-      </button>
-
-      <button type="button">
-        <i class="material-icons">format_italic</i>
-      </button>
-
-      <button type="button">
-        <i class="material-icons">format_underlined</i>
-      </button>
-    </section>
-
-    <section class="spreadsheet__formula">
-      <h2 class="visually-hidden">Formula</h2>
-
-      <div class="info">𝑓𝑥</div>
-      <div class="formula-bar" contenteditable spellcheck="false"></div>
-    </section>
-
-    <section class="spreadsheet__table">
-      <h2 class="visually-hidden">Table</h2>
-
-      <div class="row">
-
-        <div class="row-info"></div>
-
-        <div class="row-data">
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-          <div class="column">
-            A
-          </div>
-          <div class="column">
-            B
-          </div>
-          <div class="column">
-            C
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="row-info">
-          1
-        </div>
-
-        <div class="row-data">
-          <div class="cell selected" contenteditable="">A1</div>
-          <div class="cell" contenteditable="">B2</div>
-          <div class="cell" contenteditable="">C3</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="row-info">
-          2
-        </div>
-
-        <div class="row-data">
-          <div class="cell">A1</div>
-          <div class="cell">B2</div>
-          <div class="cell">C3</div>
-        </div>
-      </div>
-    </section>
   </main>
 </body>
 </html>
