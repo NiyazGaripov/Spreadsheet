@@ -1,0 +1,41 @@
+@import "src/scss/config/variables";
+@import "src/scss/config/mixins";
+
+.spreadsheet__header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 22px;
+  height: $header-height;
+
+  input {
+    margin: 0;
+    padding: 2px 7px;
+    min-width: 14px;
+
+    font-size: 18px;
+    line-height: 22px;
+    color: $black;
+
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    outline: none;
+
+    &:hover {
+      border: 1px solid $gray;
+    }
+
+    &:focus {
+      border: 2px solid $blue;
+    }
+  }
+
+  button {
+    @include button($red, 20px);
+  }
+}

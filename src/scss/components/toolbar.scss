@@ -1,0 +1,21 @@
+@import "src/scss/config/variables";
+@import "src/scss/config/mixins";
+
+.spreadsheet__toolbar {
+  position: absolute;
+  top: $header-height;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  padding: 7px 10px;
+  height: $toolbar-height;
+
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+
+  button {
+    margin-right: 2px;
+    @include button($green);
+  }
+}
