@@ -1,3 +1,7 @@
+import {Spreadsheet} from '@/components/spreadsheet/Spreadsheet';
+
 import './scss/index.scss';
 
-console.log('JavaScript');
+const spreadsheet = new Spreadsheet();
+
+console.log('spreadsheet', spreadsheet);
