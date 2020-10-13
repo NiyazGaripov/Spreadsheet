@@ -14,5 +14,4 @@ const spreadsheet = new Spreadsheet('#app', {
     Table,
   ],
 });
-
-console.log('spreadsheet', spreadsheet);
+spreadsheet.render();
