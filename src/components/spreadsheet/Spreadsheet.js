@@ -20,4 +20,8 @@ export class Spreadsheet {
 
     return $root;
   }
+
+  render() {
+    this._$node.appendChild(this.getRoot());
+  }
 }
