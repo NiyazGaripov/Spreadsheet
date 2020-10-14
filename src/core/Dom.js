@@ -13,6 +13,12 @@ class Dom {
     }
     return this.$node.outerHTML.trim();
   }
+
+  clear() {
+    this.html('');
+
+    return this;
+  }
 }
 
 export function $(selector) {
