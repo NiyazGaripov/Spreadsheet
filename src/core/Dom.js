@@ -4,6 +4,15 @@ class Dom {
       document.querySelector(selector) :
       selector;
   }
+
+  html(html) {
+    if (typeof html === 'string') {
+      this.$node.innerHTML = html;
+
+      return this;
+    }
+    return this.$node.outerHTML.trim();
+  }
 }
 
 export function $(selector) {
