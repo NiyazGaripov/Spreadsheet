@@ -1,9 +1,13 @@
 class Dom {
-
+  constructor(selector) {
+    this.$node = typeof selector === 'string' ?
+      document.querySelector(selector) :
+      selector;
+  }
 }
 
-export function $() {
-  return new Dom();
+export function $(selector) {
+  return new Dom(selector);
 }
 
 $.create = (tagName, classes) => {
