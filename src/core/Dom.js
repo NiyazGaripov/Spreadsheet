@@ -14,6 +14,20 @@ class Dom {
     return this.$node.outerHTML.trim();
   }
 
+  append(el) {
+    if (el instanceof Dom) {
+      el = el.$node;
+    }
+
+    if (Element.prototype.append) {
+      this.$node.append(el);
+    } else {
+      this.$node.appendChild(el);
+    }
+
+    return this;
+  }
+
   clear() {
     this.html('');
 
