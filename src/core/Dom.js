@@ -25,12 +25,12 @@ export function $(selector) {
   return new Dom(selector);
 }
 
-$.create = (tagName, classes) => {
+$.create = (tagName, classes = '') => {
   const node = document.createElement(tagName);
 
   if (classes) {
     node.classList.add(classes);
   }
 
-  return node;
+  return $(node);
 };
