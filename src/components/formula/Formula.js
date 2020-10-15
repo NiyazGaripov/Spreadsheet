@@ -1,6 +1,12 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 
 export class Formula extends SpreadsheetComponent {
+  constructor($root) {
+    super($root, {
+      name: 'Formula',
+      listeners: ['input'],
+    });
+  }
   static className = 'spreadsheet__formula';
 
   getTemplate() {
