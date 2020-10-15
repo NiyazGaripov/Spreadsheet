@@ -24,5 +24,7 @@ export class Spreadsheet {
 
   render() {
     this.$node.append(this.getRoot());
+
+    this.components.forEach((component) => component.init());
   }
 }
