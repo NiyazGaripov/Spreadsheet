@@ -8,4 +8,8 @@ export class SpreadsheetComponent extends Listener {
   getTemplate() {
     return '';
   }
+
+  init() {
+    this.initListeners();
+  }
 }
