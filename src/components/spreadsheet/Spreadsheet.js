@@ -2,7 +2,7 @@ import {$} from '@core/Dom';
 
 export class Spreadsheet {
   constructor(selector, options) {
-    this._$node = document.querySelector(selector);
+    this.$node = $(selector);
     this.components = options.components || [];
   }
 
@@ -13,15 +13,14 @@ export class Spreadsheet {
       const $el = $.create('div', Component.className);
       const component = new Component($el);
 
-      $el.innerHTML = component.getTemplate();
-
-      $root.appendChild($el);
+      $el.html(component.getTemplate());
+      $root.append($el);
     });
 
     return $root;
   }
 
   render() {
-    this._$node.appendChild(this.getRoot());
+    this.$node.append(this.getRoot());
   }
 }
