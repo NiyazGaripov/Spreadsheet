@@ -28,6 +28,10 @@ class Dom {
     return this;
   }
 
+  on(eventType, callback) {
+    this.$node.addEventListener(eventType, callback);
+  }
+
   clear() {
     this.html('');
 
