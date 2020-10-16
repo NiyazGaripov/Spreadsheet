@@ -1,3 +1,9 @@
+import {capitalize} from '@core/utils';
+
+const getCallbackName = (eventName) => {
+  return 'on' + capitalize(eventName);
+};
+
 export class Listener {
   constructor($root, listeners = []) {
     if (!$root) {
