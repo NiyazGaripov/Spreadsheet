@@ -28,4 +28,12 @@ export class Listener {
       this.$root.on(listener, this[method]);
     });
   }
+
+  removeListeners() {
+    this.listeners.forEach((listener) => {
+      const method = getCallbackName(listener);
+
+      this.$root.off(listener, this[method]);
+    });
+  }
 }
