@@ -32,6 +32,10 @@ class Dom {
     this.$node.addEventListener(eventType, callback);
   }
 
+  off(eventType, callback) {
+    this.$node.removeEventListener(eventType, callback);
+  }
+
   clear() {
     this.html('');
 
