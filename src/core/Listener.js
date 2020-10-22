@@ -24,7 +24,8 @@ export class Listener {
         );
       }
 
-      this.$root.on(listener, this[method].bind(this));
+      this[method] = this[method].bind(this);
+      this.$root.on(listener, this[method]);
     });
   }
 }
