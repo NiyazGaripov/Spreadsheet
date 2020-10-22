@@ -4,7 +4,7 @@ export class Formula extends SpreadsheetComponent {
   constructor($root) {
     super($root, {
       name: 'Formula',
-      listeners: ['input'],
+      listeners: ['input', 'click'],
     });
   }
   static className = 'spreadsheet__formula';
