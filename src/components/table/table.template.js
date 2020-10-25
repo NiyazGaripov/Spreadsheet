@@ -3,18 +3,20 @@ const ASCII_CODES = {
   Z: 90,
 };
 
-const createRow = () => {
+const createRow = (content) => {
+  console.log(content);
+
   return (
     `<div class="row">
         <div class="row-info"></div>
-        <div class="row-data"></div>
+        <div class="row-data">${content}</div>
     </div>`
   );
 };
 
-const createCololumn = () => {
+const createCololumn = (column) => {
   return (
-    `<div class="column"></div>`
+    `<div class="column">${column}</div>`
   );
 };
 
