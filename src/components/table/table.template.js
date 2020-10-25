@@ -11,3 +11,9 @@ const createRow = () => {
     </div>`
   );
 };
+
+const createCololumn = () => {
+  return (
+    `<div class="column"></div>`
+  );
+};
