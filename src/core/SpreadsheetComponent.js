@@ -13,4 +13,9 @@ export class SpreadsheetComponent extends Listener {
   init() {
     this.initListeners();
   }
+
+  destroy() {
+    console.log('remove');
+    this.removeListeners();
+  }
 }
