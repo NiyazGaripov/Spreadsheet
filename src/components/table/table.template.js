@@ -17,3 +17,13 @@ const createCololumn = () => {
     `<div class="column"></div>`
   );
 };
+
+const createCell = () => {
+  return (
+    `<div class="cell" contenteditable></div>`
+  );
+};
+
+export const createTableComponent = (rowCount = 10) => {
+  const colsCount = ASCII_CODES.Z - ASCII_CODES.A;
+};
