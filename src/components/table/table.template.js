@@ -3,12 +3,10 @@ const ASCII_CODES = {
   Z: 90,
 };
 
-const createRow = (content) => {
-  console.log(content);
-
+const createRow = (content, index = ``) => {
   return (
     `<div class="row">
-        <div class="row-info"></div>
+        <div class="row-info">${index}</div>
         <div class="row-data">${content}</div>
     </div>`
   );
@@ -20,12 +18,35 @@ const createCololumn = (column) => {
   );
 };
 
-const createCell = () => {
+const createCell = (cell) => {
   return (
-    `<div class="cell" contenteditable></div>`
+    `<div class="cell" contenteditable>${cell}</div>`
   );
 };
 
+const getCharCode = (_, index) => {
+  return String.fromCharCode(ASCII_CODES.A + index);
+};
+
 export const createTableComponent = (rowCount = 10) => {
-  const colsCount = ASCII_CODES.Z - ASCII_CODES.A;
+  const rows = [];
+  const colsCount = ASCII_CODES.Z - ASCII_CODES.A + 1;
+  const columns = new Array(colsCount)
+      .fill(``)
+      .map(getCharCode)
+      .map(createCololumn)
+      .join(``);
+
+  const cells = new Array(colsCount)
+      .fill(``)
+      .map(createCell)
+      .join(``);
+
+  rows.push(createRow(columns));
+
+  for (let i = 0; i < rowCount; i += 1) {
+    rows.push(createRow(cells, i + 1));
+  }
+
+  return rows.join(``);
 };
