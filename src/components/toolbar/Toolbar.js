@@ -38,4 +38,8 @@ export class Toolbar extends SpreadsheetComponent {
         </button>`
     );
   }
+
+  onClick(event) {
+    console.log(event.target);
+  }
 }

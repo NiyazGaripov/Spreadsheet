@@ -17,4 +17,14 @@ export class Formula extends SpreadsheetComponent {
       <div class="formula-bar" contenteditable spellcheck="false"></div>`
     );
   }
+
+  onInput(evt) {
+    console.log(this.$root);
+    console.log(evt.target.textContent.trim());
+  }
+
+  onClick(evt) {
+    console.log(this.$root);
+    console.log(evt.target.textContent.trim());
+  }
 }
