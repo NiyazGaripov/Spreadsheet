@@ -5,6 +5,6 @@ export class Table extends SpreadsheetComponent {
   static className = 'spreadsheet__table';
 
   getTemplate() {
-    return createTableComponent();
+    return createTableComponent(20);
   }
 }
