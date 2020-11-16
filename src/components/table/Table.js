@@ -5,7 +5,7 @@ export class Table extends SpreadsheetComponent {
   constructor($root) {
     super($root, {
       name: 'Table',
-      listeners: [],
+      listeners: ['mousedown'],
     });
   }
 
@@ -13,5 +13,9 @@ export class Table extends SpreadsheetComponent {
 
   getTemplate() {
     return createTableComponent(20);
+  }
+
+  onMousedown(evt) {
+    console.log(evt.target.dataset);
   }
 }
