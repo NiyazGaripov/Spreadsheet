@@ -4,9 +4,16 @@ const ASCII_CODES = {
 };
 
 const createRow = (content, index = ``) => {
+  const resizeElement = index ?
+    `<div class="row-resize" data-resize="row"></div>` :
+    ``;
+
   return (
     `<div class="row">
-        <div class="row-info">${index}</div>
+        <div class="row-info">
+            ${index}
+            ${resizeElement}
+        </div>
         <div class="row-data">${content}</div>
     </div>`
   );
@@ -14,7 +21,10 @@ const createRow = (content, index = ``) => {
 
 const createCololumn = (column) => {
   return (
-    `<div class="column">${column}</div>`
+    `<div class="column">
+        ${column}
+        <div class="column-resize" data-resize="column"></div>
+    </div>`
   );
 };
 
