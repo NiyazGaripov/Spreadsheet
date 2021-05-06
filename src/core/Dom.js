@@ -41,6 +41,10 @@ class Dom {
 
     return this;
   }
+
+  closest(selector) {
+    return $(this.$node.closest(selector));
+  }
 }
 
 export function $(selector) {
