@@ -40,7 +40,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: $col-width;
+    min-width: 40px;
+    width: $col-width;
 
     background-color: lighten($gray, 21%);
     border: 1px solid $gray;
@@ -51,7 +52,8 @@
 
   .cell {
     padding: 5px;
-    min-width: $col-width;
+    min-width: 40px;
+    width: $col-width;
     height: 100%;
 
     border: 1px solid lighten($gray, 10%);
