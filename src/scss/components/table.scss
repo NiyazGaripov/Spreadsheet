@@ -12,6 +12,7 @@
   .row {
     display: flex;
     flex-direction: row;
+    min-height: $row-height;
     height: $row-height;
   }
 
@@ -80,6 +81,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 1;
 
     background-color: $blue;
 
@@ -88,7 +90,7 @@
     transition: 0.1s;
 
     &:hover {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 
