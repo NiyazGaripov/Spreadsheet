@@ -49,6 +49,10 @@ class Dom {
   getCoords() {
     return this.$node.getBoundingClientRect();
   }
+
+  get dataAttribute() {
+    return this.$node.dataset;
+  }
 }
 
 export function $(selector) {
