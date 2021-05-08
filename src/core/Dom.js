@@ -54,6 +54,12 @@ class Dom {
     return this.$node.querySelectorAll(selector);
   }
 
+  setCss(styles) {
+    Object.keys(styles).forEach((property) => {
+      this.$node.style[property] = styles[property];
+    });
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
