@@ -9,7 +9,7 @@ const createRow = (content, index = ``) => {
     ``;
 
   return (
-    `<div class="row">
+    `<div class="row" data-type="resizable">
         <div class="row-info">
             ${index}
             ${resizeElement}
@@ -19,18 +19,18 @@ const createRow = (content, index = ``) => {
   );
 };
 
-const createCololumn = (column) => {
+const createCololumn = (column, index) => {
   return (
-    `<div class="column">
+    `<div class="column" data-type="resizable" data-column="${index}">
         ${column}
         <div class="column-resize" data-resize="column"></div>
     </div>`
   );
 };
 
-const createCell = (cell) => {
+const createCell = (cell, column) => {
   return (
-    `<div class="cell" contenteditable>${cell}</div>`
+    `<div class="cell" data-column="${column}" contenteditable>${cell}</div>`
   );
 };
 
