@@ -1,5 +1,7 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 import {createTableComponent} from '@/components/table/table.template';
+import {resizeHandler} from '@/components/table/table.resize';
+import {shouldResize} from '@/components/table/table.helpers';
 
 export class Table extends SpreadsheetComponent {
   constructor($root) {
@@ -16,6 +18,8 @@ export class Table extends SpreadsheetComponent {
   }
 
   onMousedown(evt) {
-    console.log(evt.target.dataset);
+    if (shouldResize(evt)) {
+      resizeHandler(this.$root, evt);
+    }
   }
 }
