@@ -50,6 +50,10 @@ class Dom {
     return this.$node.getBoundingClientRect();
   }
 
+  getSlectorAll(selector) {
+    return this.$node.querySelectorAll(selector);
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
