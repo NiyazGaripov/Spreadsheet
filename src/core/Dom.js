@@ -50,7 +50,11 @@ class Dom {
     return this.$node.getBoundingClientRect();
   }
 
-  getSlectorAll(selector) {
+  getSelector(selector) {
+    return $(this.$node.querySelector(selector));
+  }
+
+  getSelectorAll(selector) {
     return this.$node.querySelectorAll(selector);
   }
 
@@ -58,6 +62,14 @@ class Dom {
     Object.keys(styles).forEach((property) => {
       this.$node.style[property] = styles[property];
     });
+  }
+
+  addClass(className) {
+    this.$node.classList.add(className);
+  }
+
+  removeClass(className) {
+    this.$node.classList.remove(className);
   }
 
   get dataAttribute() {
