@@ -72,6 +72,18 @@ class Dom {
     this.$node.classList.remove(className);
   }
 
+  getId(parse) {
+    if (parse) {
+      const parsed = this.getId().split(':');
+
+      return {
+        row: +parsed[0],
+        column: +parsed[1],
+      };
+    }
+    return this.dataAttribute.id;
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
