@@ -1,7 +1,12 @@
+import {$} from '@core/Dom';
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 import {createTableComponent} from '@/components/table/table.template';
 import {resizeHandler} from '@/components/table/table.resize';
-import {shouldResize} from '@/components/table/table.helpers';
+import {
+  createMatrix,
+  isCell,
+  shouldResize,
+} from '@/components/table/table.helpers';
 import {TableSelection} from '@/components/table/TableSelection';
 
 export class Table extends SpreadsheetComponent {
@@ -32,6 +37,16 @@ export class Table extends SpreadsheetComponent {
   onMousedown(evt) {
     if (shouldResize(evt)) {
       resizeHandler(this.$root, evt);
+    } else if (isCell(evt)) {
+      const $target = $(evt.target);
+
+      if (evt.shiftKey) {
+        const $cells = createMatrix($target, this.selection.current)
+            .map((id) => this.$root.getSelector(`[data-id="${id}"]`));
+        this.selection.selectGroup($cells);
+      } else {
+        this.selection.select($target);
+      }
     }
   }
 }
