@@ -9,7 +9,7 @@ export class TableSelection {
   // $node instanceof Dom
   select($node) {
     this.clear();
-    $node.addClass(TableSelection.className);
+    $node.setFocus().addClass(TableSelection.className);
     this.group.push($node);
     this.current = $node;
   }
