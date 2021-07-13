@@ -84,6 +84,11 @@ class Dom {
     return this.dataAttribute.id;
   }
 
+  setFocus() {
+    this.$node.focus();
+    return this;
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
