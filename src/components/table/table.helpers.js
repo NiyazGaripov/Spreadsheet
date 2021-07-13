@@ -19,3 +19,29 @@ export const createMatrix = ($target, $current) => {
     return acc;
   }, []);
 };
+
+export const nextSelector = (key, id) => {
+  const MIN_VALUE = 0;
+  let {row, column} = id;
+
+  switch (key) {
+    case 'Enter':
+    case 'ArrowDown':
+      row += 1;
+      break;
+    case 'Tab':
+    case 'ArrowRight':
+      column += 1;
+      break;
+    case 'ArrowLeft':
+      column = column - 1 < MIN_VALUE ? MIN_VALUE : column - 1;
+      break;
+    case 'ArrowUp':
+      row = row - 1 < MIN_VALUE ? MIN_VALUE : row - 1;
+      break;
+    default:
+      return;
+  }
+
+  return `[data-id="${row}:${column}"]`;
+};
