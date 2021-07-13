@@ -5,6 +5,7 @@ import {resizeHandler} from '@/components/table/table.resize';
 import {
   createMatrix,
   isCell,
+  nextSelector,
   shouldResize,
 } from '@/components/table/table.helpers';
 import {TableSelection} from '@/components/table/TableSelection';
@@ -13,7 +14,7 @@ export class Table extends SpreadsheetComponent {
   constructor($root) {
     super($root, {
       name: 'Table',
-      listeners: ['mousedown'],
+      listeners: ['mousedown', 'keydown'],
     });
   }
 
@@ -47,6 +48,27 @@ export class Table extends SpreadsheetComponent {
       } else {
         this.selection.select($target);
       }
+    }
+  }
+
+  onKeydown(evt) {
+    const {key} = evt;
+
+    const keys = [
+      'Enter',
+      'Tab',
+      'ArrowRight',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowUp',
+    ];
+
+    if (keys.includes(key) && !evt.shiftKey) {
+      evt.preventDefault();
+      const id = this.selection.current.getId(true);
+      const $next = this.$root.getSelector(nextSelector(key, id));
+
+      this.selection.select($next);
     }
   }
 }
