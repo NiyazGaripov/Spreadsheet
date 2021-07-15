@@ -89,6 +89,10 @@ class Dom {
     return this;
   }
 
+  setText(text) {
+    this.$node.textContent = text;
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
