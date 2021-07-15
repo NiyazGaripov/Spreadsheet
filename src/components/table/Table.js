@@ -11,10 +11,11 @@ import {
 import {TableSelection} from '@/components/table/TableSelection';
 
 export class Table extends SpreadsheetComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Table',
       listeners: ['mousedown', 'keydown'],
+      ...options,
     });
   }
 
@@ -33,6 +34,10 @@ export class Table extends SpreadsheetComponent {
 
     const $cell = this.$root.getSelector('[data-id="0:0"]');
     this.selection.select($cell);
+
+    this.emitter.subscribe('it is working', (text) => {
+      this.selection.current.text(text);
+    });
   }
 
   onMousedown(evt) {

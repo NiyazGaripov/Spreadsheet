@@ -1,10 +1,11 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 
 export class Toolbar extends SpreadsheetComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Toolbar',
       listeners: ['click'],
+      ...options,
     });
   }
   static className = 'spreadsheet__toolbar';

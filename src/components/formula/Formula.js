@@ -1,10 +1,11 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 
 export class Formula extends SpreadsheetComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click'],
+      listeners: ['input'],
+      ...options,
     });
   }
   static className = 'spreadsheet__formula';
@@ -20,11 +21,7 @@ export class Formula extends SpreadsheetComponent {
 
   onInput(evt) {
     console.log(this.$root);
-    console.log(evt.target.textContent.trim());
-  }
-
-  onClick(evt) {
-    console.log(this.$root);
-    console.log(evt.target.textContent.trim());
+    const text = evt.target.textContent.trim();
+    this.emitter.emit('it is working', text);
   }
 }
