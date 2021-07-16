@@ -16,6 +16,10 @@ export class SpreadsheetComponent extends Listener {
 
   prepare() {}
 
+  $emit(evt, ...args) {
+    this.emitter.emit(evt, ...args);
+  }
+
   init() {
     this.initListeners();
   }
