@@ -20,6 +20,11 @@ export class SpreadsheetComponent extends Listener {
     this.emitter.emit(evt, ...args);
   }
 
+  $on(evt, fn) {
+    const unsubscribe = this.emitter.subscribe(evt, ...fn);
+    this.unsubscribers.push(unsubscribe);
+  }
+
   init() {
     this.initListeners();
   }
