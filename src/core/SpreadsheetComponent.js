@@ -5,6 +5,7 @@ export class SpreadsheetComponent extends Listener {
     super($root, options.listeners);
     this.name = options.name || '';
     this.emitter = options.emitter;
+    this.unsubscribers = [];
 
     this.prepare();
   }
@@ -20,7 +21,7 @@ export class SpreadsheetComponent extends Listener {
   }
 
   destroy() {
-    console.log('remove');
     this.removeListeners();
+    this.unsubscribers.forEach((unsubscribe) => unsubscribe());
   }
 }
