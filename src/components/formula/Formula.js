@@ -20,8 +20,7 @@ export class Formula extends SpreadsheetComponent {
   }
 
   onInput(evt) {
-    console.log(this.$root);
     const text = evt.target.textContent.trim();
-    this.emitter.emit('it is working', text);
+    this.$emit('formula:input', text);
   }
 }
