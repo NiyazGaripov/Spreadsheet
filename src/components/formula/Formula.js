@@ -4,7 +4,7 @@ export class Formula extends SpreadsheetComponent {
   constructor($root, options) {
     super($root, {
       name: 'Formula',
-      listeners: ['input'],
+      listeners: ['input', 'keydown'],
       ...options,
     });
   }
@@ -22,5 +22,13 @@ export class Formula extends SpreadsheetComponent {
   onInput(evt) {
     const text = evt.target.textContent.trim();
     this.$emit('formula:input', text);
+  }
+
+  onKeydown(evt) {
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+
+      this.$emit('formula:done');
+    }
   }
 }
