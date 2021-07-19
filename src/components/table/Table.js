@@ -38,6 +38,10 @@ export class Table extends SpreadsheetComponent {
     this.$on('formula:input', (text) => {
       this.selection.current.setText(text);
     });
+
+    this.$on('formula:done', () => {
+      this.selection.current.setFocus();
+    });
   }
 
   onMousedown(evt) {
