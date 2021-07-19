@@ -90,7 +90,16 @@ class Dom {
   }
 
   setText(text) {
-    this.$node.textContent = text;
+    if (typeof text === 'string') {
+      this.$node.textContent = text;
+
+      return this;
+    }
+
+    if (this.$node.tagName.toLowerCase() === 'input') {
+      return this.$node.value.trim();
+    }
+    return this.$node.textContent.trim();
   }
 
   get dataAttribute() {
