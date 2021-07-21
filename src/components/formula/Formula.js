@@ -1,4 +1,5 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
+import {$} from '@core/Dom';
 
 export class Formula extends SpreadsheetComponent {
   constructor($root, options) {
@@ -20,8 +21,7 @@ export class Formula extends SpreadsheetComponent {
   }
 
   onInput(evt) {
-    const text = evt.target.textContent.trim();
-    this.$emit('formula:input', text);
+    this.$emit('formula:input', $(evt.target).setText());
   }
 
   onKeydown(evt) {
