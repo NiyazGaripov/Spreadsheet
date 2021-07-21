@@ -44,7 +44,12 @@ export class Formula extends SpreadsheetComponent {
   }
 
   onKeydown(evt) {
-    if (evt.key === 'Enter') {
+    const keys = [
+      'Enter',
+      'Tab',
+    ];
+
+    if (keys.includes(evt.key)) {
       evt.preventDefault();
 
       this.$emit('formula:done');
