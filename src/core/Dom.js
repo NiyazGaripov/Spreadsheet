@@ -66,10 +66,12 @@ class Dom {
 
   addClass(className) {
     this.$node.classList.add(className);
+    return this;
   }
 
   removeClass(className) {
     this.$node.classList.remove(className);
+    return this;
   }
 
   getId(parse) {
