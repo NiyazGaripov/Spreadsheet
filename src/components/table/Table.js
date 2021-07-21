@@ -33,7 +33,7 @@ export class Table extends SpreadsheetComponent {
     super.init();
 
     const $cell = this.$root.getSelector('[data-id="0:0"]');
-    this.selection.select($cell);
+    this.selectCell($cell);
 
     this.$on('formula:input', (text) => {
       this.selection.current.setText(text);
@@ -42,6 +42,11 @@ export class Table extends SpreadsheetComponent {
     this.$on('formula:done', () => {
       this.selection.current.setFocus();
     });
+  }
+
+  selectCell($cell) {
+    this.selection.select($cell);
+    this.$emit('table:select', $cell);
   }
 
   onMousedown(evt) {
@@ -77,8 +82,7 @@ export class Table extends SpreadsheetComponent {
       const id = this.selection.current.getId(true);
       const $next = this.$root.getSelector(nextSelector(key, id));
 
-      this.selection.select($next);
-      this.$emit('table:select', $next);
+      this.selectCell($next);
     }
   }
 
