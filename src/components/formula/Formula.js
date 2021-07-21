@@ -1,10 +1,12 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
+import {$} from '@core/Dom';
 
 export class Formula extends SpreadsheetComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click'],
+      listeners: ['input', 'keydown'],
+      ...options,
     });
   }
   static className = 'spreadsheet__formula';
@@ -14,17 +16,43 @@ export class Formula extends SpreadsheetComponent {
       `<h2 class="visually-hidden">Formula</h2>
 
       <div class="info">𝑓𝑥</div>
-      <div class="formula-bar" contenteditable spellcheck="false"></div>`
+      <div
+        id="formula-bar"
+        class="formula-bar"
+        contenteditable
+        spellcheck="false">
+      </div>`
     );
   }
 
-  onInput(evt) {
-    console.log(this.$root);
-    console.log(evt.target.textContent.trim());
+  init() {
+    super.init();
+
+    this.$formula = this.$root.getSelector('#formula-bar');
+
+    this.$on('table:select', ($cell) => {
+      this.$formula.setText($cell.setText());
+    });
+
+    this.$on('table:input', ($cell) => {
+      this.$formula.setText($cell.setText());
+    });
   }
 
-  onClick(evt) {
-    console.log(this.$root);
-    console.log(evt.target.textContent.trim());
+  onInput(evt) {
+    this.$emit('formula:input', $(evt.target).setText());
+  }
+
+  onKeydown(evt) {
+    const keys = [
+      'Enter',
+      'Tab',
+    ];
+
+    if (keys.includes(evt.key)) {
+      evt.preventDefault();
+
+      this.$emit('formula:done');
+    }
   }
 }

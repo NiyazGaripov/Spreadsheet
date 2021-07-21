@@ -50,7 +50,11 @@ class Dom {
     return this.$node.getBoundingClientRect();
   }
 
-  getSlectorAll(selector) {
+  getSelector(selector) {
+    return $(this.$node.querySelector(selector));
+  }
+
+  getSelectorAll(selector) {
     return this.$node.querySelectorAll(selector);
   }
 
@@ -58,6 +62,46 @@ class Dom {
     Object.keys(styles).forEach((property) => {
       this.$node.style[property] = styles[property];
     });
+  }
+
+  addClass(className) {
+    this.$node.classList.add(className);
+    return this;
+  }
+
+  removeClass(className) {
+    this.$node.classList.remove(className);
+    return this;
+  }
+
+  getId(parse) {
+    if (parse) {
+      const parsed = this.getId().split(':');
+
+      return {
+        row: +parsed[0],
+        column: +parsed[1],
+      };
+    }
+    return this.dataAttribute.id;
+  }
+
+  setFocus() {
+    this.$node.focus();
+    return this;
+  }
+
+  setText(text) {
+    if (typeof text === 'string') {
+      this.$node.textContent = text;
+
+      return this;
+    }
+
+    if (this.$node.tagName.toLowerCase() === 'input') {
+      return this.$node.value.trim();
+    }
+    return this.$node.textContent.trim();
   }
 
   get dataAttribute() {

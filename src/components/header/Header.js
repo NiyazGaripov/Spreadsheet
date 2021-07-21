@@ -3,6 +3,13 @@ import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 export class Header extends SpreadsheetComponent {
   static className = 'spreadsheet__header';
 
+  constructor($root, options) {
+    super($root, {
+      name: 'Header',
+      ...options,
+    });
+  }
+
   getTemplate() {
     return (
       `<input type="text" value="Untitled spreadsheet"/>

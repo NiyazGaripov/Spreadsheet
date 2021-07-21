@@ -1,10 +1,10 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 
 export class Toolbar extends SpreadsheetComponent {
-  constructor($root) {
+  constructor($root, options) {
     super($root, {
       name: 'Toolbar',
-      listeners: ['click'],
+      ...options,
     });
   }
   static className = 'spreadsheet__toolbar';
@@ -37,9 +37,5 @@ export class Toolbar extends SpreadsheetComponent {
           <i class="material-icons">format_underlined</i>
         </button>`
     );
-  }
-
-  onClick(event) {
-    console.log(event.target);
   }
 }

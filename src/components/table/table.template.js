@@ -28,11 +28,19 @@ const createCololumn = (column, index) => {
   );
 };
 
-const createCell = (cell, column) => {
-  return (
-    `<div class="cell" data-column="${column}" contenteditable>${cell}</div>`
-  );
-};
+function createCell(row) {
+  return function(cell, column) {
+    return (
+      `<div
+        class="cell"
+        contenteditable
+        data-column="${column}"
+        data-id="${row}:${column}"
+        data-type="cell">
+      </div>`
+    );
+  };
+}
 
 const getCharCode = (_, index) => {
   return String.fromCharCode(ASCII_CODES.A + index);
@@ -47,15 +55,15 @@ export const createTableComponent = (rowCount = 10) => {
       .map(createCololumn)
       .join(``);
 
-  const cells = new Array(colsCount)
-      .fill(``)
-      .map(createCell)
-      .join(``);
-
   rows.push(createRow(columns));
 
-  for (let i = 0; i < rowCount; i += 1) {
-    rows.push(createRow(cells, i + 1));
+  for (let row = 0; row < rowCount; row += 1) {
+    const cells = new Array(colsCount)
+        .fill(``)
+        .map(createCell(row))
+        .join(``);
+
+    rows.push(createRow(cells, row + 1));
   }
 
   return rows.join(``);

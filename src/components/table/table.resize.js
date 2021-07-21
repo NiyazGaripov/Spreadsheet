@@ -40,7 +40,7 @@ export const resizeHandler = ($root, evt) => {
         width: value + 'px',
       });
       $root
-          .getSlectorAll(`[data-column="${$parent.dataAttribute.column}"]`)
+          .getSelectorAll(`[data-column="${$parent.dataAttribute.column}"]`)
           .forEach((item) => item.style.width = value + 'px');
     } else {
       $parent.setCss({
