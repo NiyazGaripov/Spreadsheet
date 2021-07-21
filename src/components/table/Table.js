@@ -78,6 +78,7 @@ export class Table extends SpreadsheetComponent {
       const $next = this.$root.getSelector(nextSelector(key, id));
 
       this.selection.select($next);
+      this.$emit('table:select', $next);
     }
   }
 }

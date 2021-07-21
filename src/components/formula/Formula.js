@@ -16,8 +16,25 @@ export class Formula extends SpreadsheetComponent {
       `<h2 class="visually-hidden">Formula</h2>
 
       <div class="info">𝑓𝑥</div>
-      <div class="formula-bar" contenteditable spellcheck="false"></div>`
+      <div
+        id="formula-bar"
+        class="formula-bar"
+        contenteditable
+        spellcheck="false">
+      </div>`
     );
+  }
+
+  init() {
+    super.init();
+
+    this.$formula = this.$root.getSelector('#formula-bar');
+    console.log('this.$formula', this.$formula);
+
+    this.$on('table:select', ($cell) => {
+      console.log('$cell', $cell);
+      this.$formula.setText($cell.setText());
+    });
   }
 
   onInput(evt) {
