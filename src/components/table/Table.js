@@ -14,7 +14,7 @@ export class Table extends SpreadsheetComponent {
   constructor($root, options) {
     super($root, {
       name: 'Table',
-      listeners: ['mousedown', 'keydown'],
+      listeners: ['mousedown', 'keydown', 'input'],
       ...options,
     });
   }
@@ -80,5 +80,9 @@ export class Table extends SpreadsheetComponent {
       this.selection.select($next);
       this.$emit('table:select', $next);
     }
+  }
+
+  onInput(evt) {
+    this.$emit('table:input', $(evt.target));
   }
 }

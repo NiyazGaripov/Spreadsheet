@@ -29,10 +29,12 @@ export class Formula extends SpreadsheetComponent {
     super.init();
 
     this.$formula = this.$root.getSelector('#formula-bar');
-    console.log('this.$formula', this.$formula);
 
     this.$on('table:select', ($cell) => {
-      console.log('$cell', $cell);
+      this.$formula.setText($cell.setText());
+    });
+
+    this.$on('table:input', ($cell) => {
       this.$formula.setText($cell.setText());
     });
   }
