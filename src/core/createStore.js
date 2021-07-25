@@ -1,9 +1,17 @@
 export function createStore() {
   const state = {};
-  const listeners = [];
+  let listeners = [];
 
   return {
-    subscribe() {},
+    subscribe(fn) {
+      listeners.push(fn);
+
+      return {
+        unsubscribe() {
+          listeners = listeners.filter((listener) => listener !== fn);
+        },
+      };
+    },
     dispatch() {},
     getState() {},
   };
