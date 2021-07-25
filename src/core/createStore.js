@@ -1,5 +1,5 @@
-export function createStore() {
-  const state = {};
+export function createStore(rootReducer) {
+  let state = {};
   let listeners = [];
 
   return {
@@ -12,7 +12,10 @@ export function createStore() {
         },
       };
     },
-    dispatch() {},
+    dispatch(action) {
+      state = rootReducer(state, action);
+      listeners.forEach((listener) => listener(state));
+    },
     getState() {},
   };
 }
