@@ -8,7 +8,9 @@ import {rootReducer} from '@/redux/rootReducer';
 
 import './scss/index.scss';
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, {
+  tableTitle: 'Table title',
+});
 
 const spreadsheet = new Spreadsheet('#app', {
   components: [

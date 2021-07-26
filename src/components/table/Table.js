@@ -42,6 +42,10 @@ export class Table extends SpreadsheetComponent {
     this.$on('formula:done', () => {
       this.selection.current.setFocus();
     });
+
+    this.$subscribe((state) => {
+      console.log('Table State', state);
+    });
   }
 
   selectCell($cell) {
@@ -60,7 +64,7 @@ export class Table extends SpreadsheetComponent {
             .map((id) => this.$root.getSelector(`[data-id="${id}"]`));
         this.selection.selectGroup($cells);
       } else {
-        this.selection.select($target);
+        this.selectCell($target);
       }
     }
   }

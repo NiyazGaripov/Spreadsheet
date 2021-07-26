@@ -37,6 +37,10 @@ export class Formula extends SpreadsheetComponent {
     this.$on('table:input', ($cell) => {
       this.$formula.setText($cell.setText());
     });
+
+    this.$subscribe((state) => {
+      console.log('Formula State', state);
+    });
   }
 
   onInput(evt) {
