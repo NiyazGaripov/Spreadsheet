@@ -5,6 +5,7 @@ export class Spreadsheet {
   constructor(selector, options) {
     this.$node = $(selector);
     this.components = options.components || [];
+    this.store = options.store;
     this.emitter = new Emitter();
   }
 
@@ -12,6 +13,7 @@ export class Spreadsheet {
     const $root = $.create('main', 'spreadsheet');
     const componentOptions = {
       emitter: this.emitter,
+      store: this.store,
     };
 
     this.components = this.components.map((Component) => {
