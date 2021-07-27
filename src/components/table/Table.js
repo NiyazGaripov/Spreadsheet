@@ -53,9 +53,19 @@ export class Table extends SpreadsheetComponent {
     this.$emit('table:select', $cell);
   }
 
+  async resizeTable(evt) {
+    try {
+      const data = await resizeHandler(this.$root, evt);
+      this.$dispatch({type: 'TABLE_RESIZE', data});
+      console.log('DATA', data);
+    } catch (e) {
+      console.log('ERROR', e.message);
+    }
+  }
+
   onMousedown(evt) {
     if (shouldResize(evt)) {
-      resizeHandler(this.$root, evt);
+      this.resizeTable(evt);
     } else if (isCell(evt)) {
       const $target = $(evt.target);
 
