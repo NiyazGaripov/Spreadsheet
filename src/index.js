@@ -9,7 +9,7 @@ import {rootReducer} from '@/redux/rootReducer';
 import './scss/index.scss';
 
 const store = createStore(rootReducer, {
-  tableTitle: 'Table title',
+  columnState: {},
 });
 
 const spreadsheet = new Spreadsheet('#app', {
