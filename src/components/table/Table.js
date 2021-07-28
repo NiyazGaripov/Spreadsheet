@@ -9,6 +9,7 @@ import {
   shouldResize,
 } from '@/components/table/table.helpers';
 import {TableSelection} from '@/components/table/TableSelection';
+import * as actions from '@/redux/actions';
 
 export class Table extends SpreadsheetComponent {
   constructor($root, options) {
@@ -56,7 +57,7 @@ export class Table extends SpreadsheetComponent {
   async resizeTable(evt) {
     try {
       const data = await resizeHandler(this.$root, evt);
-      this.$dispatch({type: 'TABLE_RESIZE', data});
+      this.$dispatch(actions.tableResize(data));
       console.log('DATA', data);
     } catch (e) {
       console.log('ERROR', e.message);
