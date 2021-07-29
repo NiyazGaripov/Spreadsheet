@@ -23,7 +23,7 @@ export class Table extends SpreadsheetComponent {
   static className = 'spreadsheet__table';
 
   getTemplate() {
-    return createTableComponent(20);
+    return createTableComponent(20, this.store.getState());
   }
 
   prepare() {
