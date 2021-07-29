@@ -39,7 +39,7 @@ const createRow = (content, index = ``) => {
   );
 };
 
-const createCololumn = ({column, index, width}) => {
+const createColumn = ({column, index, width}) => {
   return (
     `<div
         class="column"
@@ -75,7 +75,7 @@ export const createTableComponent = (rowCount = 10, state = {}) => {
       .fill(``)
       .map(getCharCode)
       .map(widthFrom(state))
-      .map(createCololumn)
+      .map(createColumn)
       .join(``);
 
   rows.push(createRow(columns));
