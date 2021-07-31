@@ -51,7 +51,8 @@ export const resizeHandler = ($root, evt) => {
 
       resolve({
         value,
-        id: type === 'column' ? $parent.dataAttribute.column : null,
+        type,
+        id: $parent.dataAttribute[type],
       });
 
       $resizer.setCss({
