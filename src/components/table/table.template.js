@@ -4,6 +4,7 @@ const ASCII_CODES = {
 };
 
 const DEFAULT_WIDTH = 120;
+const DEFAULT_HEIGHT = 24;
 
 const getCharCode = (_, index) => {
   return String.fromCharCode(ASCII_CODES.A + index);
@@ -23,13 +24,22 @@ const widthFrom = (state) => {
   };
 };
 
-const createRow = (content, index = ``) => {
+const getRowHeight= (state, index) => {
+  return (state[index] || DEFAULT_HEIGHT) + 'px';
+};
+
+const createRow = (content, index = ``, state) => {
+  const height = getRowHeight(state, index);
   const resizeElement = index ?
     `<div class="row-resize" data-resize="row"></div>` :
     ``;
 
   return (
-    `<div class="row" data-type="resizable">
+    `<div
+        class="row"
+        data-type="resizable"
+        data-row="${index}"
+        style="height: ${height}">
         <div class="row-info">
             ${index}
             ${resizeElement}
@@ -54,7 +64,7 @@ const createColumn = ({column, index, width}) => {
 
 const createCell = (state, row) => {
   return function(cell, column) {
-    const width = getColumnWidth(state.columnState, column);
+    const width = getColumnWidth(state, column);
     return (
       `<div
         class="cell"
@@ -78,15 +88,15 @@ export const createTableComponent = (rowCount = 10, state = {}) => {
       .map(createColumn)
       .join(``);
 
-  rows.push(createRow(columns));
+  rows.push(createRow(columns, ``, {}));
 
   for (let row = 0; row < rowCount; row += 1) {
     const cells = new Array(colsCount)
         .fill(``)
-        .map(createCell(state, row))
+        .map(createCell(state.columnState, row))
         .join(``);
 
-    rows.push(createRow(cells, row + 1));
+    rows.push(createRow(cells, row + 1, state.rowState));
   }
 
   return rows.join(``);
