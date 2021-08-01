@@ -40,6 +40,7 @@ export class Formula extends SpreadsheetComponent {
 
     this.$subscribe((state) => {
       console.log('Formula State', state);
+      this.$formula.setText(state.currentText);
     });
   }
 
