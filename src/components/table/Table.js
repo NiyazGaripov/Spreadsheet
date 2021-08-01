@@ -38,6 +38,7 @@ export class Table extends SpreadsheetComponent {
 
     this.$on('formula:input', (text) => {
       this.selection.current.setText(text);
+      this.updateTextInStore(text);
     });
 
     this.$on('formula:done', () => {
@@ -62,6 +63,13 @@ export class Table extends SpreadsheetComponent {
     } catch (e) {
       console.log('ERROR', e.message);
     }
+  }
+
+  updateTextInStore(value) {
+    this.$dispatch(actions.changeText({
+      id: this.selection.current.getId(),
+      value,
+    }));
   }
 
   onMousedown(evt) {
@@ -102,6 +110,6 @@ export class Table extends SpreadsheetComponent {
   }
 
   onInput(evt) {
-    this.$emit('table:input', $(evt.target));
+    this.updateTextInStore($(evt.target).setText());
   }
 }
