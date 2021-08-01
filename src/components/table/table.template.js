@@ -64,15 +64,18 @@ const createColumn = ({column, index, width}) => {
 
 const createCell = (state, row) => {
   return function(cell, column) {
-    const width = getColumnWidth(state, column);
+    const id = `${row}:${column}`;
+    const width = getColumnWidth(state.columnState, column);
+    const data = state.dataState[id];
     return (
       `<div
         class="cell"
         contenteditable
         data-column="${column}"
-        data-id="${row}:${column}"
+        data-id="${id}"
         data-type="cell"
         style="width: ${width}">
+        ${data || ''}
       </div>`
     );
   };
@@ -93,7 +96,7 @@ export const createTableComponent = (rowCount = 10, state = {}) => {
   for (let row = 0; row < rowCount; row += 1) {
     const cells = new Array(colsCount)
         .fill(``)
-        .map(createCell(state.columnState, row))
+        .map(createCell(state, row))
         .join(``);
 
     rows.push(createRow(cells, row + 1, state.rowState));
