@@ -44,10 +44,6 @@ export class Table extends SpreadsheetComponent {
     this.$on('formula:done', () => {
       this.selection.current.setFocus();
     });
-
-    this.$subscribe((state) => {
-      console.log('Table State', state);
-    });
   }
 
   selectCell($cell) {
