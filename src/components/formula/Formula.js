@@ -6,6 +6,7 @@ export class Formula extends SpreadsheetComponent {
     super($root, {
       name: 'Formula',
       listeners: ['input', 'keydown'],
+      subscribe: ['currentText'],
       ...options,
     });
   }
@@ -33,15 +34,10 @@ export class Formula extends SpreadsheetComponent {
     this.$on('table:select', ($cell) => {
       this.$formula.setText($cell.setText());
     });
+  }
 
-    this.$on('table:input', ($cell) => {
-      this.$formula.setText($cell.setText());
-    });
-
-    this.$subscribe((state) => {
-      console.log('Formula State', state);
-      this.$formula.setText(state.currentText);
-    });
+  storeChanged({currentText}) {
+    this.$formula.setText(currentText);
   }
 
   onInput(evt) {
