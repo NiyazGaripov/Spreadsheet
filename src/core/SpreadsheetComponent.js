@@ -7,7 +7,6 @@ export class SpreadsheetComponent extends Listener {
     this.store = options.store;
     this.emitter = options.emitter;
     this.unsubscribers = [];
-    this.storeSub = null;
 
     this.prepare();
   }
@@ -31,10 +30,6 @@ export class SpreadsheetComponent extends Listener {
     this.store.dispatch(action);
   }
 
-  $subscribe(fn) {
-    this.storeSub = this.store.subscribe(fn);
-  }
-
   init() {
     this.initListeners();
   }
@@ -42,6 +37,5 @@ export class SpreadsheetComponent extends Listener {
   destroy() {
     this.removeListeners();
     this.unsubscribers.forEach((unsubscribe) => unsubscribe());
-    this.storeSub.unsubscribe();
   }
 }
