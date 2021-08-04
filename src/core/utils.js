@@ -14,3 +14,10 @@ export const range = (start, end) => {
       .fill('')
       .map((_, index) => start + index);
 };
+
+export const isEqual = (a, b) => {
+  if (typeof a === 'object' && typeof b === 'object') {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  return a === b;
+};
