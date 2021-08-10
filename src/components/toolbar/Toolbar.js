@@ -12,8 +12,12 @@ export class Toolbar extends SpreadsheetStateComponent {
   }
   static className = 'spreadsheet__toolbar';
 
+  get template() {
+    return createToolbar(this.state);
+  }
+
   getTemplate() {
-    return createToolbar();
+    return this.template;
   }
 
   onClick(evt) {
