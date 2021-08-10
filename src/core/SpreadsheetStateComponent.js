@@ -4,4 +4,8 @@ export class SpreadsheetStateComponent extends SpreadsheetComponent {
   constructor(...args) {
     super(...args);
   }
+
+  get template() {
+    return JSON.stringify(this.state, null, 2);
+  }
 }
