@@ -1,8 +1,8 @@
-import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 import {createToolbar} from '@/components/toolbar/toolbar.template';
 import {$} from '@core/Dom';
+import {SpreadsheetStateComponent} from '@core/SpreadsheetStateComponent';
 
-export class Toolbar extends SpreadsheetComponent {
+export class Toolbar extends SpreadsheetStateComponent {
   constructor($root, options) {
     super($root, {
       name: 'Toolbar',
@@ -19,7 +19,9 @@ export class Toolbar extends SpreadsheetComponent {
   onClick(evt) {
     const $target = $(evt.target);
     if ($target.dataAttribute.type === 'button') {
-      console.log($target.dataAttribute.value);
+      const value = JSON.parse($target.dataAttribute.value);
+      const key = Object.keys(value)[0];
+      this.setState({[key]: value[key]});
     }
   }
 }
