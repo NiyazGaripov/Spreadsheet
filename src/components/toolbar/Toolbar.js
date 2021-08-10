@@ -12,6 +12,16 @@ export class Toolbar extends SpreadsheetStateComponent {
   }
   static className = 'spreadsheet__toolbar';
 
+  prepare() {
+    const initialState = {
+      textAlign: 'left',
+      fontWeight: 'normal',
+      fontStyle: 'normal',
+      textDecoration: 'none',
+    };
+    this.initState(initialState);
+  }
+
   get template() {
     return createToolbar(this.state);
   }
