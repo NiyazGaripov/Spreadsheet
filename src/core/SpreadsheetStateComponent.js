@@ -12,4 +12,9 @@ export class SpreadsheetStateComponent extends SpreadsheetComponent {
   initState(initialState = {}) {
     this.state = {...initialState};
   }
+
+  setState(newState) {
+    this.state = {...this.state, ...newState};
+    this.$root.html(this.template);
+  }
 }
