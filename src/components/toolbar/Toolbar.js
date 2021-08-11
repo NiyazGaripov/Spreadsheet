@@ -1,6 +1,7 @@
 import {createToolbar} from '@/components/toolbar/toolbar.template';
 import {$} from '@core/Dom';
 import {SpreadsheetStateComponent} from '@core/SpreadsheetStateComponent';
+import {DEFAULT_STYLES} from '@/constants';
 
 export class Toolbar extends SpreadsheetStateComponent {
   constructor($root, options) {
@@ -13,13 +14,7 @@ export class Toolbar extends SpreadsheetStateComponent {
   static className = 'spreadsheet__toolbar';
 
   prepare() {
-    const initialState = {
-      textAlign: 'left',
-      fontWeight: 'normal',
-      fontStyle: 'normal',
-      textDecoration: 'none',
-    };
-    this.initState(initialState);
+    this.initState(DEFAULT_STYLES);
   }
 
   get template() {
@@ -34,6 +29,7 @@ export class Toolbar extends SpreadsheetStateComponent {
     const $target = $(evt.target);
     if ($target.dataAttribute.type === 'button') {
       const value = JSON.parse($target.dataAttribute.value);
+      this.$emit('toolbar:applyStyle', value);
       const key = Object.keys(value)[0];
       this.setState({[key]: value[key]});
     }
