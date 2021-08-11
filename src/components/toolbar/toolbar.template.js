@@ -57,11 +57,11 @@ export const createToolbar = (state) => {
     },
     {
       icon: 'format_underlined',
-      active: state['textDecoration'] === 'underlined',
+      active: state['textDecoration'] === 'underline',
       value: {
-        textDecoration: state['textDecoration'] === 'underlined' ?
+        textDecoration: state['textDecoration'] === 'underline' ?
           'none' :
-          'underlined',
+          'underline',
       },
     },
   ];
