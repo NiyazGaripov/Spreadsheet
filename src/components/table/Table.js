@@ -10,6 +10,7 @@ import {
 } from '@/components/table/table.helpers';
 import {TableSelection} from '@/components/table/TableSelection';
 import * as actions from '@/redux/actions';
+import {DEFAULT_STYLES} from '@/constants';
 
 export class Table extends SpreadsheetComponent {
   constructor($root, options) {
@@ -44,11 +45,16 @@ export class Table extends SpreadsheetComponent {
     this.$on('formula:done', () => {
       this.selection.current.setFocus();
     });
+
+    this.$on('toolbar:applyStyle', (style) => {
+      this.selection.applyStyle(style);
+    });
   }
 
   selectCell($cell) {
     this.selection.select($cell);
     this.$emit('table:select', $cell);
+    console.log($cell.getStyles(Object.keys(DEFAULT_STYLES)));
   }
 
   async resizeTable(evt) {
