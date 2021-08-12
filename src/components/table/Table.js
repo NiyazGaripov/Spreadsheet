@@ -52,9 +52,10 @@ export class Table extends SpreadsheetComponent {
   }
 
   selectCell($cell) {
+    const styles = $cell.getStyles(Object.keys(DEFAULT_STYLES));
     this.selection.select($cell);
     this.$emit('table:select', $cell);
-    console.log($cell.getStyles(Object.keys(DEFAULT_STYLES)));
+    this.$dispatch(actions.changeStyles(styles));
   }
 
   async resizeTable(evt) {
