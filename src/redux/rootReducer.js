@@ -16,11 +16,3 @@ export function rootReducer(state, action) {
     default: return state;
   }
 }
-
-export function storage(key, data = null) {
-  if (!data) {
-    return JSON.parse(localStorage.getItem(key));
-  }
-
-  localStorage.setItem(key, JSON.stringify(data));
-}
