@@ -1,4 +1,4 @@
-import {storage} from '@/redux/rootReducer';
+import {storage} from '@core/utils';
 
 const defaultState = {
   rowState: {},
