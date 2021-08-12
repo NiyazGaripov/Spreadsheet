@@ -1,3 +1,6 @@
+import {DEFAULT_STYLES} from '@/constants';
+import {camelToDashCase} from '@core/utils';
+
 const ASCII_CODES = {
   A: 65,
   Z: 90,
@@ -67,6 +70,10 @@ const createCell = (state, row) => {
     const id = `${row}:${column}`;
     const width = getColumnWidth(state.columnState, column);
     const data = state.dataState[id];
+    const styles = Object.keys(DEFAULT_STYLES)
+        .map((key) => `${camelToDashCase(key)}: ${DEFAULT_STYLES[key]}`)
+        .join(';');
+
     return (
       `<div
         class="cell"
@@ -74,7 +81,7 @@ const createCell = (state, row) => {
         data-column="${column}"
         data-id="${id}"
         data-type="cell"
-        style="width: ${width}">
+        style="width: ${width}; ${styles}">
         ${data || ''}
       </div>`
     );
