@@ -46,8 +46,12 @@ export class Table extends SpreadsheetComponent {
       this.selection.current.setFocus();
     });
 
-    this.$on('toolbar:applyStyle', (style) => {
-      this.selection.applyStyle(style);
+    this.$on('toolbar:applyStyle', (value) => {
+      this.selection.applyStyle(value);
+      this.$dispatch(actions.applyStyle({
+        value,
+        ids: this.selection.selectedIds,
+      }));
     });
   }
 
