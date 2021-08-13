@@ -28,4 +28,8 @@ export class TableSelection {
   applyStyle(style) {
     this.group.forEach(($item) => $item.setCss(style));
   }
+
+  get selectedIds() {
+    return this.group.map(($node) => $node.getId());
+  }
 }
