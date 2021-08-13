@@ -8,6 +8,7 @@ export class Toolbar extends SpreadsheetStateComponent {
     super($root, {
       name: 'Toolbar',
       listeners: ['click'],
+      subscribe: ['currentStyles'],
       ...options,
     });
   }
@@ -25,13 +26,15 @@ export class Toolbar extends SpreadsheetStateComponent {
     return this.template;
   }
 
+  storeChanged(changes) {
+    this.setState(changes.currentStyles);
+  }
+
   onClick(evt) {
     const $target = $(evt.target);
     if ($target.dataAttribute.type === 'button') {
       const value = JSON.parse($target.dataAttribute.value);
       this.$emit('toolbar:applyStyle', value);
-      const key = Object.keys(value)[0];
-      this.setState({[key]: value[key]});
     }
   }
 }
