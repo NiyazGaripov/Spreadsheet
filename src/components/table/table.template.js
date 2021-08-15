@@ -1,4 +1,5 @@
 import {toInlineStyles} from '@core/utils';
+import {DEFAULT_STYLES} from '@/constants';
 
 const ASCII_CODES = {
   A: 65,
@@ -69,7 +70,10 @@ const createCell = (state, row) => {
     const id = `${row}:${column}`;
     const width = getColumnWidth(state.columnState, column);
     const data = state.dataState[id];
-    const styles = toInlineStyles(state.stylesState[id]);
+    const styles = toInlineStyles({
+      ...DEFAULT_STYLES,
+      ...state.stylesState[id],
+    });
 
     return (
       `<div
