@@ -5,10 +5,17 @@ const defaultState = {
   rowState: {},
   columnState: {},
   dataState: {},
+  stylesState: {},
   currentText: '',
   currentStyles: DEFAULT_STYLES,
 };
 
+const normalize = (state) => ({
+  ...state,
+  currentStyles: DEFAULT_STYLES,
+  currentText: '',
+});
+
 export const initialState = storage('spreadsheet-state') ?
-  storage('spreadsheet-state') :
+  normalize(storage('spreadsheet-state')) :
   defaultState;
