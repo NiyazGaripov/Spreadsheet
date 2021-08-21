@@ -2,6 +2,7 @@ import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
 import {$} from '@core/Dom';
 import {changeTitle} from '@/redux/actions';
 import {DEFAULT_TITLE} from '@/constants';
+import {debounce} from '@core/utils';
 
 export class Header extends SpreadsheetComponent {
   static className = 'spreadsheet__header';
@@ -12,6 +13,10 @@ export class Header extends SpreadsheetComponent {
       listeners: ['input'],
       ...options,
     });
+  }
+
+  prepare() {
+    this.onInput = debounce(this.onInput, 300);
   }
 
   getTemplate() {
