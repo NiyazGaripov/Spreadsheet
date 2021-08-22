@@ -1,5 +1,6 @@
 import {toInlineStyles} from '@core/utils';
 import {DEFAULT_STYLES} from '@/constants';
+import {parse} from '@core/parse';
 
 const ASCII_CODES = {
   A: 65,
@@ -82,8 +83,9 @@ const createCell = (state, row) => {
         data-column="${column}"
         data-id="${id}"
         data-type="cell"
+        data-value="${data || ''}"
         style="width: ${width}; ${styles}">
-        ${data || ''}
+        ${parse(data) || ''}
       </div>`
     );
   };
