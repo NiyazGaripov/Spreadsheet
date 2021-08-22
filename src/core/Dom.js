@@ -111,6 +111,15 @@ class Dom {
     return this.$node.textContent.trim();
   }
 
+  attr(name, value) {
+    if (value) {
+      this.$node.setAttribute(name, value);
+
+      return this;
+    }
+    return this.$node.getAttribute(name);
+  }
+
   get dataAttribute() {
     return this.$node.dataset;
   }
