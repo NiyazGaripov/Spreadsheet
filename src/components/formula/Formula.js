@@ -32,7 +32,7 @@ export class Formula extends SpreadsheetComponent {
     this.$formula = this.$root.getSelector('#formula-bar');
 
     this.$on('table:select', ($cell) => {
-      this.$formula.setText($cell.setText());
+      this.$formula.setText($cell.dataAttribute.value);
     });
   }
 
