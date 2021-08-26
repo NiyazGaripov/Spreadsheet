@@ -11,6 +11,7 @@ import {
 import {TableSelection} from '@/components/table/TableSelection';
 import * as actions from '@/redux/actions';
 import {DEFAULT_STYLES} from '@/constants';
+import {parse} from '@core/parse';
 
 export class Table extends SpreadsheetComponent {
   constructor($root, options) {
@@ -37,9 +38,11 @@ export class Table extends SpreadsheetComponent {
     const $cell = this.$root.getSelector('[data-id="0:0"]');
     this.selectCell($cell);
 
-    this.$on('formula:input', (text) => {
-      this.selection.current.setText(text);
-      this.updateTextInStore(text);
+    this.$on('formula:input', (value) => {
+      this.selection.current
+          .attr('data-value', value)
+          .setText(parse(value));
+      this.updateTextInStore(value);
     });
 
     this.$on('formula:done', () => {
