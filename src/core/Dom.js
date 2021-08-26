@@ -99,7 +99,7 @@ class Dom {
   }
 
   setText(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$node.textContent = text;
 
       return this;
