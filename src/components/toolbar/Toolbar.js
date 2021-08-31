@@ -1,41 +1,40 @@
-import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
+import {createToolbar} from '@/components/toolbar/toolbar.template';
+import {$} from '@core/Dom';
+import {SpreadsheetStateComponent} from '@core/SpreadsheetStateComponent';
+import {DEFAULT_STYLES} from '@/constants';
 
-export class Toolbar extends SpreadsheetComponent {
+export class Toolbar extends SpreadsheetStateComponent {
   constructor($root, options) {
     super($root, {
       name: 'Toolbar',
+      listeners: ['click'],
+      subscribe: ['currentStyles'],
       ...options,
     });
   }
   static className = 'spreadsheet__toolbar';
 
+  prepare() {
+    this.initState(DEFAULT_STYLES);
+  }
+
+  get template() {
+    return createToolbar(this.state);
+  }
+
   getTemplate() {
-    return (
-      `<h2 class="visually-hidden">Toolbar</h2>
+    return this.template;
+  }
 
-        <button type="button">
-          <i class="material-icons">format_align_left</i>
-        </button>
+  storeChanged(changes) {
+    this.setState(changes.currentStyles);
+  }
 
-        <button type="button">
-          <i class="material-icons">format_align_center</i>
-        </button>
-
-        <button type="button">
-          <i class="material-icons">format_align_right</i>
-        </button>
-
-        <button type="button">
-          <i class="material-icons">format_bold</i>
-        </button>
-
-        <button type="button">
-          <i class="material-icons">format_italic</i>
-        </button>
-
-        <button type="button">
-          <i class="material-icons">format_underlined</i>
-        </button>`
-    );
+  onClick(evt) {
+    const $target = $(evt.target);
+    if ($target.dataAttribute.type === 'button') {
+      const value = JSON.parse($target.dataAttribute.value);
+      this.$emit('toolbar:applyStyle', value);
+    }
   }
 }

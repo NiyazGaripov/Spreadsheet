@@ -6,6 +6,7 @@ export class Formula extends SpreadsheetComponent {
     super($root, {
       name: 'Formula',
       listeners: ['input', 'keydown'],
+      subscribe: ['currentText'],
       ...options,
     });
   }
@@ -31,12 +32,12 @@ export class Formula extends SpreadsheetComponent {
     this.$formula = this.$root.getSelector('#formula-bar');
 
     this.$on('table:select', ($cell) => {
-      this.$formula.setText($cell.setText());
+      this.$formula.setText($cell.dataAttribute.value);
     });
+  }
 
-    this.$on('table:input', ($cell) => {
-      this.$formula.setText($cell.setText());
-    });
+  storeChanged({currentText}) {
+    this.$formula.setText(currentText);
   }
 
   onInput(evt) {

@@ -1,4 +1,8 @@
 import {SpreadsheetComponent} from '@core/SpreadsheetComponent';
+import {$} from '@core/Dom';
+import {changeTitle} from '@/redux/actions';
+import {DEFAULT_TITLE} from '@/constants';
+import {debounce} from '@core/utils';
 
 export class Header extends SpreadsheetComponent {
   static className = 'spreadsheet__header';
@@ -6,13 +10,19 @@ export class Header extends SpreadsheetComponent {
   constructor($root, options) {
     super($root, {
       name: 'Header',
+      listeners: ['input'],
       ...options,
     });
   }
 
+  prepare() {
+    this.onInput = debounce(this.onInput, 300);
+  }
+
   getTemplate() {
+    const title = this.store.getState().title || DEFAULT_TITLE;
     return (
-      `<input type="text" value="Untitled spreadsheet"/>
+      `<input type="text" value="${title}"/>
 
       <div>
         <button type="button">
@@ -24,5 +34,10 @@ export class Header extends SpreadsheetComponent {
         </button>
       </div>`
     );
+  }
+
+  onInput(evt) {
+    const $target = $(evt.target);
+    this.$dispatch(changeTitle($target.setText()));
   }
 }

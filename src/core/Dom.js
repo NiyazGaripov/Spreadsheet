@@ -64,6 +64,13 @@ class Dom {
     });
   }
 
+  getStyles(styles = []) {
+    return styles.reduce((res, style) => {
+      res[style] = this.$node.style[style];
+      return res;
+    }, {});
+  }
+
   addClass(className) {
     this.$node.classList.add(className);
     return this;
@@ -92,7 +99,7 @@ class Dom {
   }
 
   setText(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$node.textContent = text;
 
       return this;
@@ -102,6 +109,15 @@ class Dom {
       return this.$node.value.trim();
     }
     return this.$node.textContent.trim();
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$node.setAttribute(name, value);
+
+      return this;
+    }
+    return this.$node.getAttribute(name);
   }
 
   get dataAttribute() {

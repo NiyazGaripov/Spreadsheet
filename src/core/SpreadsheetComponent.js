@@ -5,6 +5,8 @@ export class SpreadsheetComponent extends Listener {
     super($root, options.listeners);
     this.name = options.name || '';
     this.emitter = options.emitter;
+    this.subscribe = options.subscribe || [];
+    this.store = options.store;
     this.unsubscribers = [];
 
     this.prepare();
@@ -23,6 +25,16 @@ export class SpreadsheetComponent extends Listener {
   $on(evt, fn) {
     const unsubscribe = this.emitter.subscribe(evt, fn);
     this.unsubscribers.push(unsubscribe);
+  }
+
+  $dispatch(action) {
+    this.store.dispatch(action);
+  }
+
+  storeChanged() {}
+
+  isWatching(key) {
+    return this.subscribe.includes(key);
   }
 
   init() {
