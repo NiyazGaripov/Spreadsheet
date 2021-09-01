@@ -3,8 +3,7 @@ import {Emitter} from '@core/Emitter';
 import {StoreSubscriber} from '@core/StoreSubscriber';
 
 export class Spreadsheet {
-  constructor(selector, options) {
-    this.$node = $(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.store = options.store;
     this.emitter = new Emitter();
@@ -31,9 +30,7 @@ export class Spreadsheet {
     return $root;
   }
 
-  render() {
-    this.$node.append(this.getRoot());
-
+  init() {
     this.storeSubscriber.subscribeComponents(this.components);
     this.components.forEach((component) => component.init());
   }
