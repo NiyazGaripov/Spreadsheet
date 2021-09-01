@@ -12,4 +12,9 @@ export class Router {
     this.changePageHandler = this.changePageHandler.bind(this);
     this.init();
   }
+
+  init() {
+    window.addEventListener('hashchange', this.changePageHandler);
+    this.changePageHandler();
+  }
 }
