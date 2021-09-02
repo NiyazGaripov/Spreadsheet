@@ -27,7 +27,7 @@ export const createDashboardList = () => {
   const keys = getAllSpreadsheets();
 
   if (keys.length === 0) {
-    return `<p>No tables have been created yet</p>`;
+    return `<p class="empty">No tables have been created yet</p>`;
   }
 
   return (`
