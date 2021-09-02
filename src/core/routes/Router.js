@@ -35,4 +35,8 @@ export class Router {
     this.$placeholder.append(this.page.getRoot());
     this.page.afterRender();
   }
+
+  destroy() {
+    window.removeEventListener('hashchange', this.changePageHandler);
+  }
 }
