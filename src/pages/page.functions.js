@@ -8,3 +8,17 @@ const createSpreadsheetItem = () => {
     </li>
   `);
 };
+
+const getAllSpreadsheets = () => {
+  const spreadsheets = [];
+
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const key = localStorage.key(i);
+    if (!key.includes('spreadsheet')) {
+      continue;
+    }
+    spreadsheets.push(key);
+  }
+
+  return spreadsheets;
+};
