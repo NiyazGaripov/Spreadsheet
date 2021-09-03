@@ -1,4 +1,3 @@
-import {storage} from '@core/utils';
 import {DEFAULT_STYLES, DEFAULT_TITLE} from '@/constants';
 
 const defaultState = {
@@ -16,7 +15,3 @@ const normalize = (state) => ({
   currentStyles: DEFAULT_STYLES,
   currentText: '',
 });
-
-export const initialState = storage('spreadsheet-state') ?
-  normalize(storage('spreadsheet-state')) :
-  defaultState;
