@@ -53,3 +53,7 @@ export const debounce = (func, ms) => {
     timeout = setTimeout(later, ms);
   };
 };
+
+export const clone = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+};
