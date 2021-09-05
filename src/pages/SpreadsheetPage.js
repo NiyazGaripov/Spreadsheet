@@ -10,7 +10,7 @@ import {Formula} from '@/components/formula/Formula';
 import {Table} from '@/components/table/Table';
 
 const createKeyName = (param) => {
-  return `spreadsheet: ${param}`;
+  return `spreadsheet:${param}`;
 };
 
 export class SpreadsheetPage extends Page {
