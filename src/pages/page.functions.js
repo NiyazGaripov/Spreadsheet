@@ -1,9 +1,17 @@
-const createSpreadsheetItem = () => {
+import {storage} from '@core/utils';
+
+const createSpreadsheetItem = (key) => {
+  const data = storage(key);
+  const href = key.split(':')[1];
+
   return (`
     <li class="dashboard__item">
-      <a class="dashboard__record" href="#">
-        <h3 class="dashboard__name">First table</h3>
-        <span>12.06.2020</span>
+      <a class="dashboard__record" href="#spreadsheet/${href}">
+        <h3 class="dashboard__name">${data.title}</h3>
+        <span>
+            ${new Date(data.openedDate).toLocaleDateString()}
+            ${new Date(data.openedDate).toLocaleTimeString()}
+        </span>
       </a>
     </li>
   `);
