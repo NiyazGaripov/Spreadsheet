@@ -19,7 +19,6 @@ export class SpreadsheetPage extends Page {
     const state = storage(createKeyName(params));
     const store = createStore(rootReducer, normalizeInitialState(state));
     const stateListener = debounce((state) => {
-      console.log('APPS', state);
       storage(createKeyName(params), state);
     }, 500);
 
