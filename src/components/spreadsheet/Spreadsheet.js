@@ -1,10 +1,11 @@
 import {$} from '@core/Dom';
 import {Emitter} from '@core/Emitter';
 import {StoreSubscriber} from '@core/StoreSubscriber';
+import {updateDate} from '@/redux/actions';
+import {preventDefault} from '@core/utils';
 
 export class Spreadsheet {
-  constructor(selector, options) {
-    this.$node = $(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.store = options.store;
     this.emitter = new Emitter();
@@ -31,9 +32,11 @@ export class Spreadsheet {
     return $root;
   }
 
-  render() {
-    this.$node.append(this.getRoot());
-
+  init() {
+    if (process.env.NODE_ENV === 'production') {
+      document.addEventListener('contextmenu', preventDefault);
+    }
+    this.store.dispatch(updateDate());
     this.storeSubscriber.subscribeComponents(this.components);
     this.components.forEach((component) => component.init());
   }
@@ -41,5 +44,6 @@ export class Spreadsheet {
   destroy() {
     this.storeSubscriber.unsubscribeFromStore();
     this.components.forEach((component) => component.destroy());
+    document.removeEventListener('contextmenu', preventDefault);
   }
 }

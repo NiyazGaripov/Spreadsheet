@@ -69,9 +69,8 @@ export class Table extends SpreadsheetComponent {
     try {
       const data = await resizeHandler(this.$root, evt);
       this.$dispatch(actions.tableResize(data));
-      console.log('DATA', data);
     } catch (e) {
-      console.log('ERROR', e.message);
+      alert(e.message);
     }
   }
 
