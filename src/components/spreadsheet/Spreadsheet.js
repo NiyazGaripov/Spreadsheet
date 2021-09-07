@@ -2,6 +2,7 @@ import {$} from '@core/Dom';
 import {Emitter} from '@core/Emitter';
 import {StoreSubscriber} from '@core/StoreSubscriber';
 import {updateDate} from '@/redux/actions';
+import {preventDefault} from '@core/utils';
 
 export class Spreadsheet {
   constructor(options) {
@@ -32,6 +33,9 @@ export class Spreadsheet {
   }
 
   init() {
+    if (process.env.NODE_ENV === 'production') {
+      document.addEventListener('contextmenu', preventDefault);
+    }
     this.store.dispatch(updateDate());
     this.storeSubscriber.subscribeComponents(this.components);
     this.components.forEach((component) => component.init());
@@ -40,5 +44,6 @@ export class Spreadsheet {
   destroy() {
     this.storeSubscriber.unsubscribeFromStore();
     this.components.forEach((component) => component.destroy());
+    document.removeEventListener('contextmenu', preventDefault);
   }
 }
