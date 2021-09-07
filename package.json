@@ -4,7 +4,7 @@
   "description": "JavaScript spreadsheet application",
   "main": "index.js",
   "scripts": {
-    "eslint": "eslint src/**/*.js",
+    "eslint": "eslint ./src",
     "test": "npm run eslint",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open"
