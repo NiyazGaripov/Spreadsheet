@@ -14,6 +14,12 @@ const createKeyName = (param) => {
 };
 
 export class SpreadsheetPage extends Page {
+  constructor(param) {
+    super(param);
+
+    this.storeSubscribe = null;
+  }
+
   getRoot() {
     const params = this.params ? this.params : Date.now().toString();
     const state = storage(createKeyName(params));
@@ -22,7 +28,7 @@ export class SpreadsheetPage extends Page {
       storage(createKeyName(params), state);
     }, 500);
 
-    store.subscribe(stateListener);
+    this.storeSubscribe = store.subscribe(stateListener);
 
     this.spreadsheet = new Spreadsheet( {
       components: [
@@ -42,5 +48,6 @@ export class SpreadsheetPage extends Page {
 
   destroy() {
     this.spreadsheet.destroy();
+    this.storeSubscribe.unsubscribe();
   }
 }
